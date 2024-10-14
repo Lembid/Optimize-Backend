@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Business Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .section {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card, .checkbox-point {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input[type="submit"] {
+            background-color: #008CBA;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #007B9A;
+        }
+        .cards-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .card {
+            flex: 1;
+        }
+        .checkbox-point {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .checkbox-point input[type="text"],
+        .checkbox-point input[type="number"] {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        .feature-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .feature-container input[type="text"] {
+            width: 80%;
+            margin-bottom: 0;
+        }
+        .feature-container button {
+            width: 15%;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/admin-navbar') %>
+    <h1>Edit Business Page</h1>
+    <form action="/admin/business" method="POST">
+        <div class="section">
+            <label for="mainTitlePart1">Main Title Part 1:</label>
+            <input type="text" id="mainTitlePart1" name="mainTitlePart1" value="<%= pageData.mainTitlePart1 %>"><br><br>
+
+            <label for="mainTitlePart2">Main Title Part 2:</label>
+            <input type="text" id="mainTitlePart2" name="mainTitlePart2" value="<%= pageData.mainTitlePart2 %>"><br><br>
+
+            <label for="subHeading">Sub Heading:</label>
+            <input type="text" id="subHeading" name="subHeading" value="<%= pageData.subHeading %>"><br><br>
+        </div>
+
+        <div class="section">
+            <h2>Cards</h2>
+            <div id="cardsContainer" class="cards-container">
+                <% for (let i = 0; i < 3; i++) { %>
+                    <div class="card">
+                        <input type="text" name="cards[<%= i %>][title]" value="<%= pageData.cards[i] ? pageData.cards[i].title : '' %>" placeholder="Card Title">
+                        <input type="text" name="cards[<%= i %>][description]" value="<%= pageData.cards[i] ? pageData.cards[i].description : '' %>" placeholder="Card Description">
+                    </div>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Left Section</h2>
+            <label for="leftSectionHeading">Heading:</label>
+            <input type="text" id="leftSectionHeading" name="leftSection[heading]" value="<%= pageData.leftSection.heading %>"><br><br>
+
+            <h3>Checkbox Points</h3>
+            <div id="checkboxPointsContainer">
+                <% pageData.leftSection.checkboxPoints.forEach((point, index) => { %>
+                    <div class="checkbox-point">
+                        <input type="text" name="leftSection[checkboxPoints][<%= index %>][icon]" value="<%= point.icon %>" placeholder="Icon URL">
+                        <input type="text" name="leftSection[checkboxPoints][<%= index %>][title]" value="<%= point.title %>" placeholder="Title">
+                        <input type="number" name="leftSection[checkboxPoints][<%= index %>][price]" value="<%= point.price %>" placeholder="Price">
+                        <label>
+                            <input type="checkbox" name="leftSection[checkboxPoints][<%= index %>][showInPage]" <%= point.showInPage ? 'checked' : '' %>>
+                            Show in Page
+                        </label>
+                        <button type="button" onclick="removeCheckboxPoint(this)">Remove</button>
+                    </div>
+                <% }) %>
+            </div>
+            <button type="button" onclick="addCheckboxPoint()">Add Checkbox Point</button>
+        </div>
+
+        <div class="section">
+            <h2>Right Section</h2>
+            <label for="rightSectionTitle">Title:</label>
+            <input type="text" id="rightSectionTitle" name="rightSection[title]" value="<%= pageData.rightSection.title %>"><br><br>
+
+            <label for="basePrice">Base Price:</label>
+            <input type="number" id="basePrice" name="rightSection[basePrice]" value="<%= pageData.rightSection.basePrice %>"><br><br>
+
+            <h3>All Plans Include</h3>
+            <div id="allPlansIncludeContainer">
+                <% pageData.rightSection.allPlansInclude.forEach((feature, index) => { %>
+                    <div class="feature-container">
+                        <input type="text" name="rightSection[allPlansInclude][]" value="<%= feature %>">
+                        <button type="button" onclick="removeFeature(this)">Remove</button>
+                    </div>
+                <% }) %>
+            </div>
+            <button type="button" onclick="addFeature()">Add Feature</button>
+        </div>
+
+        <input type="submit" value="Save Changes">
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function removeCheckboxPoint(button) {
+            button.parentElement.remove();
+        }
+
+        function addCheckboxPoint() {
+            const container = document.getElementById('checkboxPointsContainer');
+            const index = container.children.length;
+            const newPoint = document.createElement('div');
+            newPoint.className = 'checkbox-point';
+            newPoint.innerHTML = `
+                <input type="text" name="leftSection[checkboxPoints][${index}][icon]" placeholder="Icon URL">
+                <input type="text" name="leftSection[checkboxPoints][${index}][title]" placeholder="Title">
+                <input type="number" name="leftSection[checkboxPoints][${index}][price]" placeholder="Price">
+                <label>
+                    <input type="checkbox" name="leftSection[checkboxPoints][${index}][showInPage]">
+                    Show in Page
+                </label>
+                <button type="button" onclick="removeCheckboxPoint(this)">Remove</button>
+            `;
+            container.appendChild(newPoint);
+        }
+
+        function addFeature() {
+            const container = document.getElementById('allPlansIncludeContainer');
+            const newFeature = document.createElement('div');
+            newFeature.className = 'feature-container';
+            newFeature.innerHTML = `
+                <input type="text" name="rightSection[allPlansInclude][]" placeholder="Feature">
+                <button type="button" onclick="removeFeature(this)">Remove</button>
+            `;
+            container.appendChild(newFeature);
+        }
+
+        function removeFeature(button) {
+            button.parentElement.remove();
+        }
+
+        $('form').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/admin/business',
+                method: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    alert('Changes saved successfully!');
+                },
+                error: function(error) {
+                    alert('Error saving changes. Please try again.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

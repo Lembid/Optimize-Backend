@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Navigation</title>
+  <style>
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px 20px;
+    }
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .nav-links {
+      display: flex;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .nav-links a:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Admin Panel</div>
+    <div class="nav-links">
+      <a href="/admin">Home</a>
+      <a href="/admin/individual">Individual Page</a>
+      <a href="/admin/business">Business Page</a>
+      <!-- <a href="/admin/place-order">Place Order Page</a> -->
+    </div>
+  </nav>
+</body>
+</html>

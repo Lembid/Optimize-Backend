@@ -1,0 +1,76 @@
+{
+  "individual": [
+    {
+      "id": 1,
+      "mainTitle": "Tax Planning ke liye Swagat Hai",
+      "subHeading": "Apne taxes ko efficiently plan karein",
+      "cards": [
+        {
+          "title": "Card 1 ka Title",
+          "description": "Card 1 ka Description"
+        },
+        {
+          "title": "Card 2 ka Title",
+          "description": "Card 2 ka Description"
+        },
+        {
+          "title": "Card 3 ka Title",
+          "description": "Card 3 ka Description"
+        }
+      ],
+      "leftSection": {
+        "heading": "Left Section ka Heading",
+        "checkboxPoints": [
+          {
+            "title": "Checkbox Point 1",
+            "price": "1000",
+            "showInPage": true
+          },
+          {
+            "title": "Checkbox Point 2",
+            "price": "2000",
+            "showInPage": false
+          }
+        ]
+      },
+      "rightSection": {
+        "title": "Right Section title",
+        "basePrice": "5000",
+        "allPlansInclude": [
+          "Feature 1",
+          "Feature 2",
+          "Feature 3"
+        ]
+      },
+      "___id": "T000004R000002",
+      "___s": true
+    }
+  ],
+  "business": [
+    {
+      "id": 1,
+      "heroTitle": "Business Tax Planning",
+      "heroSubtitle": "Optimize your business taxes",
+      "cards": [],
+      "pricingDetails": {
+        "basePrice": 0,
+        "includedFeatures": [],
+        "customAdditions": []
+      },
+      "___id": "T000004R000002",
+      "___s": true
+    }
+  ],
+  "placeOrder": [
+    {
+      "id": 1,
+      "heroTitle": "Place Your Order",
+      "heroSubtitle": "Choose your tax planning package",
+      "pricingOptions": [],
+      "includedFeatures": [],
+      "customAdditions": [],
+      "___id": "T000004R000002",
+      "___s": true
+    }
+  ]
+}
