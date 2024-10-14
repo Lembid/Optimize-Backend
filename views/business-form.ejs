@@ -22,7 +22,7 @@
             margin-bottom: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .card, .checkbox-point {
+        .card, .checkbox-point, .question {
             border: 1px solid #ddd;
             padding: 15px;
             margin-bottom: 15px;
@@ -91,6 +91,28 @@
         .feature-container button {
             width: 15%;
         }
+        .question-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .options-container {
+            margin-top: 10px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .value-price-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .value-price-container input[type="text"],
+        .value-price-container input[type="number"] {
+            width: 45%;
+        }
     </style>
 </head>
 <body>
@@ -125,22 +147,38 @@
             <label for="leftSectionHeading">Heading:</label>
             <input type="text" id="leftSectionHeading" name="leftSection[heading]" value="<%= pageData.leftSection.heading %>"><br><br>
 
-            <h3>Checkbox Points</h3>
-            <div id="checkboxPointsContainer">
-                <% pageData.leftSection.checkboxPoints.forEach((point, index) => { %>
-                    <div class="checkbox-point">
-                        <input type="text" name="leftSection[checkboxPoints][<%= index %>][icon]" value="<%= point.icon %>" placeholder="Icon URL">
-                        <input type="text" name="leftSection[checkboxPoints][<%= index %>][title]" value="<%= point.title %>" placeholder="Title">
-                        <input type="number" name="leftSection[checkboxPoints][<%= index %>][price]" value="<%= point.price %>" placeholder="Price">
-                        <label>
-                            <input type="checkbox" name="leftSection[checkboxPoints][<%= index %>][showInPage]" <%= point.showInPage ? 'checked' : '' %>>
-                            Show in Page
-                        </label>
-                        <button type="button" onclick="removeCheckboxPoint(this)">Remove</button>
+            <h3>Questions</h3>
+            <div id="questionsContainer">
+                <% for (let i = 0; i < 7; i++) { %>
+                    <div class="question">
+                        <div class="question-label">Question <%= i+1 %></div>
+                        <% if (i === 1) { %>
+                            <input type="text" name="leftSection[questions][<%= i %>][text]" value="<%= pageData.leftSection.questions && pageData.leftSection.questions[i] ? pageData.leftSection.questions[i].text : '' %>" placeholder="Enter question here">
+                            <% for (let j = 0; j < 5; j++) { %>
+                                <div class="value-price-container">
+                                    <input type="text" name="leftSection[questions][<%= i %>][values][<%= j %>]" placeholder="Value <%= j+1 %>">
+                                    <input type="number" name="leftSection[questions][<%= i %>][prices][<%= j %>]" placeholder="Price <%= j+1 %>">
+                                </div>
+                            <% } %>
+                        <% } else { %>
+                            <input type="text" name="leftSection[questions][<%= i %>][text]" value="<%= pageData.leftSection.questions && pageData.leftSection.questions[i] ? pageData.leftSection.questions[i].text : '' %>" placeholder="Enter question here">
+                            <div class="options-container">
+                                <% if (pageData.leftSection.questions && pageData.leftSection.questions[i] && pageData.leftSection.questions[i].options) { %>
+                                    <% pageData.leftSection.questions[i].options.forEach((option, optionIndex) => { %>
+                                        <div class="option">
+                                            <input type="text" name="leftSection[questions][<%= i %>][options][<%= optionIndex %>]" value="<%= option %>" placeholder="Option">
+                                            <button type="button" onclick="removeOption(this)">Remove Option</button>
+                                        </div>
+                                    <% }) %>
+                                <% } %>
+                            </div>
+                            <button type="button" onclick="addOption(this)">Add Option</button>
+                        <% } %>
+                        <button type="button" onclick="removeQuestion(this)">Remove Question</button>
                     </div>
-                <% }) %>
+                <% } %>
             </div>
-            <button type="button" onclick="addCheckboxPoint()">Add Checkbox Point</button>
+            <button type="button" onclick="addQuestion()">Add New Question</button>
         </div>
 
         <div class="section">
@@ -168,26 +206,48 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function removeCheckboxPoint(button) {
-            button.parentElement.remove();
+        function removeQuestion(button) {
+            button.closest('.question').remove();
+            updateQuestionNumbers();
         }
 
-        function addCheckboxPoint() {
-            const container = document.getElementById('checkboxPointsContainer');
+        function addQuestion() {
+            const container = document.getElementById('questionsContainer');
             const index = container.children.length;
-            const newPoint = document.createElement('div');
-            newPoint.className = 'checkbox-point';
-            newPoint.innerHTML = `
-                <input type="text" name="leftSection[checkboxPoints][${index}][icon]" placeholder="Icon URL">
-                <input type="text" name="leftSection[checkboxPoints][${index}][title]" placeholder="Title">
-                <input type="number" name="leftSection[checkboxPoints][${index}][price]" placeholder="Price">
-                <label>
-                    <input type="checkbox" name="leftSection[checkboxPoints][${index}][showInPage]">
-                    Show in Page
-                </label>
-                <button type="button" onclick="removeCheckboxPoint(this)">Remove</button>
+            const newQuestion = document.createElement('div');
+            newQuestion.className = 'question';
+            newQuestion.innerHTML = `
+                <div class="question-label">Question ${index+1}</div>
+                <input type="text" name="leftSection[questions][${index}][text]" placeholder="Enter question here">
+                <div class="options-container"></div>
+                <button type="button" onclick="addOption(this)">Add Option</button>
+                <button type="button" onclick="removeQuestion(this)">Remove Question</button>
             `;
-            container.appendChild(newPoint);
+            container.appendChild(newQuestion);
+        }
+
+        function updateQuestionNumbers() {
+            const questions = document.querySelectorAll('.question');
+            questions.forEach((question, index) => {
+                question.querySelector('.question-label').textContent = `Question ${index + 1}`;
+            });
+        }
+
+        function addOption(button) {
+            const optionsContainer = button.previousElementSibling;
+            const optionIndex = optionsContainer.children.length;
+            const questionIndex = button.closest('.question').getAttribute('data-index');
+            const newOption = document.createElement('div');
+            newOption.className = 'option';
+            newOption.innerHTML = `
+                <input type="text" name="leftSection[questions][${questionIndex}][options][${optionIndex}]" placeholder="Option">
+                <button type="button" onclick="removeOption(this)">Remove Option</button>
+            `;
+            optionsContainer.appendChild(newOption);
+        }
+
+        function removeOption(button) {
+            button.closest('.option').remove();
         }
 
         function addFeature() {

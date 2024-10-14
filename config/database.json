@@ -2,66 +2,484 @@
   "individual": [
     {
       "id": 1,
-      "mainTitle": "Tax Planning ke liye Swagat Hai",
-      "subHeading": "Apne taxes ko efficiently plan karein",
+      "mainTitlePart1": "Personal Tax Preparation for Residents,",
+      "mainTitlePart2": "Non-Residents, and US Expats",
+      "subHeading": "Optimize Tax ensures maximum refunds with accurate service and Peace of Mind - IRS Audit Defense.",
       "cards": [
         {
-          "title": "Card 1 ka Title",
-          "description": "Card 1 ka Description"
+          "title": "Transparent Pricing",
+          "description": "Choose The Services You Need And See Your Cost Upfront"
         },
         {
-          "title": "Card 2 ka Title",
-          "description": "Card 2 ka Description"
+          "title": "Quick Assistance",
+          "description": "Schedule A 5-Minute Call To Determine Your Needs And Get A Guaranteed Price"
         },
         {
-          "title": "Card 3 ka Title",
-          "description": "Card 3 ka Description"
+          "title": "No Obligation",
+          "description": "No Pressure To Work With Us After The Call"
         }
       ],
       "leftSection": {
-        "heading": "Left Section ka Heading",
+        "heading": "Select all that apply & we'll find you the right plan:",
         "checkboxPoints": [
           {
             "title": "Checkbox Point 1",
             "price": "1000",
-            "showInPage": true
+            "showInPage": "on"
           },
           {
             "title": "Checkbox Point 2",
-            "price": "2000",
-            "showInPage": false
+            "price": "2000"
           }
         ]
       },
       "rightSection": {
-        "title": "Right Section title",
-        "basePrice": "5000",
+        "title": "Review your upfront pricing:",
+        "basePrice": "169",
         "allPlansInclude": [
-          "Feature 1",
-          "Feature 2",
-          "Feature 3"
+          "One Free State Tax Return",
+          "Unlimited W2's",
+          "$10,000 IRS Insurance Guarantee",
+          "Unlimited Stock Transactions",
+          "Itemized Deductions"
         ]
       },
-      "___id": "T000004R000002",
+      "___id": "T000002R000002",
       "___s": true
+    },
+    {
+      "id": 1,
+      "mainTitlePart1": "Personal Tax Preparation for Residents,",
+      "mainTitlePart2": "Non-Residents, and US Expats",
+      "subHeading": "Optimize Tax ensures maximum refunds with accurate service and Peace of Mind - IRS Audit Defense.",
+      "cards": [
+        {
+          "title": "Transparent Pricing",
+          "description": "Choose The Services You Need And See Your Cost Upfront"
+        },
+        {
+          "title": "Quick Assistance",
+          "description": "Schedule A 5-Minute Call To Determine Your Needs And Get A Guaranteed Price"
+        },
+        {
+          "title": "No Obligation",
+          "description": "No Pressure To Work With Us After The Call"
+        }
+      ],
+      "leftSection": {
+        "heading": "Select all that apply & we'll find you the right plan:",
+        "checkboxPoints": [
+          {
+            "title": "Checkbox Point 1",
+            "price": "1000",
+            "showInPage": "on"
+          },
+          {
+            "title": "Checkbox Point 2",
+            "price": "2000"
+          }
+        ]
+      },
+      "rightSection": {
+        "title": "Review your upfront pricing:",
+        "basePrice": "169",
+        "allPlansInclude": [
+          "One Free State Tax Return",
+          "Unlimited W2's",
+          "$10,000 IRS Insurance Guarantee",
+          "Unlimited Stock Transactions",
+          "Itemized Deductions"
+        ]
+      },
+      "___id": "T000002R000003",
+      "___s": true
+    },
+    {
+      "id": 1,
+      "mainTitle": "Tax Planning ke liye Swagat Hai",
+      "subHeading": "Optimize Tax ensures maximum refunds with accurate service and Peace of Mind - IRS Audit Defense.",
+      "cards": [
+        {
+          "title": "Transparent Pricing",
+          "description": "Choose The Services You Need And See Your Cost Upfront"
+        },
+        {
+          "title": "Quick Assistance",
+          "description": "Schedule A 5-Minute Call To Determine Your Needs And Get A Guaranteed Price"
+        },
+        {
+          "title": "No Obligation",
+          "description": "No Pressure To Work With Us After The Call"
+        }
+      ],
+      "leftSection": {
+        "heading": "Select all that apply & we'll find you the right plan:",
+        "checkboxPoints": [
+          {
+            "title": "Checkbox Point 1",
+            "price": "1000",
+            "showInPage": "on"
+          },
+          {
+            "title": "Checkbox Point 2",
+            "price": "2000"
+          }
+        ]
+      },
+      "rightSection": {
+        "title": "Review your upfront pricing:",
+        "basePrice": "169",
+        "allPlansInclude": [
+          "One Free State Tax Return",
+          "Unlimited W2's",
+          "$10,000 IRS Insurance Guarantee",
+          "Unlimited Stock Transactions",
+          "Itemized Deductions"
+        ]
+      },
+      "___id": "T000002R000004",
+      "___s": true,
+      "mainTitlePart1": "Personal Tax Preparation for Residents,",
+      "mainTitlePart2": "Non-Residents, and US Expats"
     }
   ],
   "business": [
     {
       "id": 1,
+      "mainTitlePart1": "Business Tax Preparation for Partnership,",
+      "mainTitlePart2": "S-Corp and Corporation",
+      "subHeading": "Optimize Tax ensures maximum refunds with accurate service and Peace of Mind - IRS Audit Defense.",
+      "cards": [
+        {
+          "title": "Transparent Pricing",
+          "description": "Choose The Services You Need And See Your Cost Upfront"
+        },
+        {
+          "title": "Quick Assistance",
+          "description": "Schedule A 5-Minute Call To Determine Your Needs And Get A Guaranteed Price"
+        },
+        {
+          "title": "No Obligation",
+          "description": "No Pressure To Work With Us After The Call"
+        }
+      ],
+      "leftSection": {
+        "heading": "Select all that apply & we'll find you the right plan:",
+        "questions": {
+          "0": {
+            "text": "Choose the Entity type"
+          },
+          "1": {
+            "text": "What is the annual revenue of the business",
+            "values": [
+              "0",
+              "100",
+              "250K",
+              "500K",
+              "1M"
+            ],
+            "prices": [
+              "0",
+              "25",
+              "50",
+              "75",
+              "100"
+            ]
+          },
+          "2": {
+            "text": "How many fixed assets?"
+          },
+          "3": {
+            "text": "Requires State Filing"
+          },
+          "4": {
+            "text": "Local State Compliance"
+          },
+          "5": {
+            "text": "Add Personal Tax"
+          },
+          "6": {
+            "text": "Requirement BOI Reporting"
+          },
+          "null": {
+            "options": [
+              [
+                "Single Member LLC",
+                "0-5",
+                "Yes",
+                "Yes",
+                "Yes",
+                "Yes"
+              ],
+              [
+                "S-Corp",
+                "6 or more",
+                "No",
+                "No",
+                "No",
+                "No"
+              ],
+              "Partnership",
+              "Corporation"
+            ]
+          }
+        }
+      },
+      "rightSection": {
+        "title": "Review your upfront pricing:",
+        "basePrice": "168",
+        "allPlansInclude": [
+          "One Free State Tax Return",
+          "Unlimited W2's",
+          "$10,000 IRS Penalty Insurance Guarantee",
+          "Unlimited Stock Transactions",
+          "Itemized Deductions",
+          "No Hidden Fees",
+          "Maximum Refund Guarantee"
+        ]
+      },
+      "___id": "T000003R000002",
+      "___s": true
+    },
+    {
+      "id": 1,
+      "mainTitlePart1": "Business Tax Preparation for Partnership,",
+      "mainTitlePart2": "S-Corp and Corporation",
+      "subHeading": "Optimize Tax ensures maximum refunds with accurate service and Peace of Mind - IRS Audit Defense.",
+      "cards": [
+        {
+          "title": "Transparent Pricing",
+          "description": "Choose The Services You Need And See Your Cost Upfront"
+        },
+        {
+          "title": "Quick Assistance",
+          "description": "Schedule A 5-Minute Call To Determine Your Needs And Get A Guaranteed Price"
+        },
+        {
+          "title": "No Obligation",
+          "description": "No Pressure To Work With Us After The Call"
+        }
+      ],
+      "leftSection": {
+        "heading": "Select all that apply & we'll find you the right plan:",
+        "questions": {
+          "0": {
+            "text": "Choose the Entity type"
+          },
+          "1": {
+            "text": "What is the annual revenue of the business",
+            "values": [
+              "0",
+              "100",
+              "250K",
+              "500K",
+              "1M"
+            ],
+            "prices": [
+              "0",
+              "25",
+              "50",
+              "75",
+              "100"
+            ]
+          },
+          "2": {
+            "text": "How many fixed assets?"
+          },
+          "3": {
+            "text": "Requires State Filing"
+          },
+          "4": {
+            "text": "Local State Compliance"
+          },
+          "5": {
+            "text": "Add Personal Tax"
+          },
+          "6": {
+            "text": "Requirement BOI Reporting"
+          },
+          "null": {
+            "options": [
+              [
+                "Single Member LLC",
+                "0-5",
+                "Yes",
+                "Yes",
+                "Yes",
+                "Yes"
+              ],
+              [
+                "S-Corp",
+                "6 or more",
+                "No",
+                "No",
+                "No",
+                "No"
+              ],
+              "Partnership",
+              "Corporation"
+            ]
+          }
+        }
+      },
+      "rightSection": {
+        "title": "Review your upfront pricing:",
+        "basePrice": "168",
+        "allPlansInclude": [
+          "One Free State Tax Return",
+          "Unlimited W2's",
+          "$10,000 IRS Penalty Insurance Guarantee",
+          "Unlimited Stock Transactions",
+          "Itemized Deductions",
+          "No Hidden Fees",
+          "Maximum Refund Guarantee"
+        ]
+      },
+      "___id": "T000003R000003",
+      "___s": true
+    },
+    {
+      "id": 1,
       "heroTitle": "Business Tax Planning",
       "heroSubtitle": "Optimize your business taxes",
-      "cards": [],
+      "cards": [
+        {
+          "title": "Transparent Pricing",
+          "description": "Choose The Services You Need And See Your Cost Upfront"
+        },
+        {
+          "title": "Quick Assistance",
+          "description": "Schedule A 5-Minute Call To Determine Your Needs And Get A Guaranteed Price"
+        },
+        {
+          "title": "No Obligation",
+          "description": "No Pressure To Work With Us After The Call"
+        }
+      ],
       "pricingDetails": {
         "basePrice": 0,
         "includedFeatures": [],
         "customAdditions": []
       },
-      "___id": "T000004R000002",
-      "___s": true
+      "___id": "T000003R000004",
+      "___s": true,
+      "mainTitlePart1": "Business Tax Preparation for Partnership,",
+      "mainTitlePart2": "S-Corp and Corporation",
+      "subHeading": "Optimize Tax ensures maximum refunds with accurate service and Peace of Mind - IRS Audit Defense.",
+      "leftSection": {
+        "heading": "Select all that apply & we'll find you the right plan:",
+        "questions": {
+          "0": {
+            "text": "Choose the Entity type"
+          },
+          "1": {
+            "text": "What is the annual revenue of the business",
+            "values": [
+              "0",
+              "100",
+              "250K",
+              "500K",
+              "1M"
+            ],
+            "prices": [
+              "0",
+              "25",
+              "50",
+              "75",
+              "100"
+            ]
+          },
+          "2": {
+            "text": "How many fixed assets?"
+          },
+          "3": {
+            "text": "Requires State Filing"
+          },
+          "4": {
+            "text": "Local State Compliance"
+          },
+          "5": {
+            "text": "Add Personal Tax"
+          },
+          "6": {
+            "text": "Requirement BOI Reporting"
+          },
+          "null": {
+            "options": [
+              [
+                "Single Member LLC",
+                "0-5",
+                "Yes",
+                "Yes",
+                "Yes",
+                "Yes"
+              ],
+              [
+                "S-Corp",
+                "6 or more",
+                "No",
+                "No",
+                "No",
+                "No"
+              ],
+              "Partnership",
+              "Corporation"
+            ]
+          }
+        }
+      },
+      "rightSection": {
+        "title": "Review your upfront pricing:",
+        "basePrice": "168",
+        "allPlansInclude": [
+          "One Free State Tax Return",
+          "Unlimited W2's",
+          "$10,000 IRS Penalty Insurance Guarantee",
+          "Unlimited Stock Transactions",
+          "Itemized Deductions",
+          "No Hidden Fees",
+          "Maximum Refund Guarantee"
+        ]
+      }
     }
   ],
   "placeOrder": [
+    {
+      "id": 1,
+      "mainTitlePart1": "Place Your Order",
+      "mainTitlePart2": "for Tax Planning",
+      "subHeading": "Choose your tax planning package",
+      "cards": [],
+      "leftSection": {
+        "heading": "Order Left Section Heading",
+        "checkboxPoints": []
+      },
+      "rightSection": {
+        "title": "Order Right Section Title",
+        "basePrice": 10000,
+        "allPlansInclude": []
+      },
+      "___id": "T000004R000002",
+      "___s": true
+    },
+    {
+      "id": 1,
+      "mainTitlePart1": "Place Your Order",
+      "mainTitlePart2": "for Tax Planning",
+      "subHeading": "Choose your tax planning package",
+      "cards": [],
+      "leftSection": {
+        "heading": "Order Left Section Heading",
+        "checkboxPoints": []
+      },
+      "rightSection": {
+        "title": "Order Right Section Title",
+        "basePrice": 10000,
+        "allPlansInclude": []
+      },
+      "___id": "T000004R000003",
+      "___s": true
+    },
     {
       "id": 1,
       "heroTitle": "Place Your Order",
@@ -69,7 +487,7 @@
       "pricingOptions": [],
       "includedFeatures": [],
       "customAdditions": [],
-      "___id": "T000004R000002",
+      "___id": "T000004R000004",
       "___s": true
     }
   ]

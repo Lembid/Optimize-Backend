@@ -29,7 +29,7 @@
             padding: 15px;
             margin-bottom: 15px;
         }
-        input[type="text"], input[type="number"], input[type="file"] {
+        input[type="text"], input[type="number"], input[type="file"], input[type="url"] {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
@@ -78,6 +78,15 @@
         #allPlansIncludeContainer button {
             width: 15%;
         }
+        .icon-input-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .icon-input-container input[type="file"],
+        .icon-input-container input[type="url"] {
+            width: 48%;
+        }
     </style>
 </head>
 <body>    <%- include('partials/admin-navbar') %>
@@ -115,7 +124,10 @@
             <div id="checkboxPointsContainer">
                 <% pageData.leftSection.checkboxPoints.forEach((point, index) => { %>
                     <div class="checkbox-point">
-                        <input type="file" name="leftSection[checkboxPoints][<%= index %>][icon]" accept=".svg">
+                        <div class="icon-input-container">
+                            <input type="file" name="leftSection[checkboxPoints][<%= index %>][iconFile]" accept=".svg">
+                            <input type="url" name="leftSection[checkboxPoints][<%= index %>][iconUrl]" placeholder="Icon URL" value="<%= point.icon %>">
+                        </div>
                         <% if(point.icon) { %>
                             <img src="<%= point.icon %>" alt="Current Icon">
                         <% } %>
@@ -167,7 +179,10 @@
             const newPoint = document.createElement('div');
             newPoint.className = 'checkbox-point';
             newPoint.innerHTML = `
-                <input type="file" name="leftSection[checkboxPoints][${index}][icon]" accept=".svg">
+                <div class="icon-input-container">
+                    <input type="file" name="leftSection[checkboxPoints][${index}][iconFile]" accept=".svg">
+                    <input type="url" name="leftSection[checkboxPoints][${index}][iconUrl]" placeholder="Icon URL">
+                </div>
                 <input type="text" name="leftSection[checkboxPoints][${index}][title]" placeholder="Title">
                 <input type="number" name="leftSection[checkboxPoints][${index}][price]" placeholder="Price">
                 <label>
