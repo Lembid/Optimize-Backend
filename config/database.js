@@ -8,19 +8,20 @@ let inMemoryDB = {};
 
 const DATABASE_FILE = process.env.DATABASE_FILE || path.join(__dirname, 'database.json');
 
-const initializeDB = () => {
-  loadDatabase();
+const initializeDB = async () => {
+  await loadDatabase();
   individualDB = taffy(inMemoryDB.individual);
   businessDB = taffy(inMemoryDB.business);
   placeOrderDB = taffy(inMemoryDB.placeOrder);
 };
 
-function loadDatabase() {
+async function loadDatabase() {
   try {
-    inMemoryDB = JSON.parse(fs.readFileSync(DATABASE_FILE, 'utf8'));
+    const data = await fs.readFile(DATABASE_FILE, 'utf8');
+    inMemoryDB = JSON.parse(data);
   } catch (error) {
     console.log('No existing database found, initializing with default data');
-    // Initialize with default data
+    inMemoryDB = { individual: [], business: [], placeOrder: [] };
   }
 }
 

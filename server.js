@@ -55,12 +55,13 @@ process.on('unhandledRejection', (reason, promise) => {
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Kuch gadbad ho gaya hai! Hum jald hi ise theek karenge.');
+  res.status(500).send('Kuch toh gadbad hai daya.');
 });
 
 // Initial data save (if needed)
 (async () => {
   try {
+    await initializeDB();
     const { getIndividualDB, getBusinessDB, getPlaceOrderDB } = require('./config/database');
     const data = {
       individual: getIndividualDB(),
