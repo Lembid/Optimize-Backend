@@ -1,10 +1,11 @@
 const taffy = require('taffydb').taffy;
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
 
 let individualDB, businessDB, placeOrderDB;
 
-const DATABASE_FILE = path.join(__dirname, 'database.json');
+const DATABASE_FILE = process.env.DATABASE_FILE || path.join(__dirname, 'database.json');
 
 const initializeDB = () => {
   let data;
