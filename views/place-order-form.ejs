@@ -89,11 +89,15 @@
         <div class="section">
             <h2>Cards</h2>
             <div id="cardsContainer">
-                <% for(let i = 0; i < 3; i++) { %>
-                    <div class="card">
-                        <input type="text" name="cards[<%= i %>][title]" value="<%= pageData.cards[i] ? pageData.cards[i].title : '' %>" placeholder="Card Title">
-                        <input type="text" name="cards[<%= i %>][description]" value="<%= pageData.cards[i] ? pageData.cards[i].description : '' %>" placeholder="Card Description">
-                    </div>
+                <% if (pageData && pageData.cards) { %>
+                    <% for(let i = 0; i < 3; i++) { %>
+                        <div class="card">
+                            <input type="text" name="cards[<%= i %>][title]" value="<%= pageData.cards[i] ? pageData.cards[i].title : '' %>" placeholder="Card Title">
+                            <input type="text" name="cards[<%= i %>][description]" value="<%= pageData.cards[i] ? pageData.cards[i].description : '' %>" placeholder="Card Description">
+                        </div>
+                    <% } %>
+                <% } else { %>
+                    <p>No card data available for place order</p>
                 <% } %>
             </div>
         </div>

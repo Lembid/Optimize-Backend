@@ -15,8 +15,16 @@ router.get('/', (req, res) => {
 });
 
 router.get('/individual', (req, res) => {
-  const pageData = getIndividualDB();
-  res.render('individual-form', { pageData });
+  try {
+    const pageData = getIndividualDB();
+    if (!pageData) {
+      throw new Error('Individual page data not found');
+    }
+    res.render('individual-form', { pageData });
+  } catch (error) {
+    console.error('Error rendering individual form:', error);
+    res.status(500).send('Kuch gadbad ho gaya hai! Hum jald hi ise theek karenge.');
+  }
 });
 
 router.post('/individual', (req, res) => {
@@ -27,8 +35,16 @@ router.post('/individual', (req, res) => {
 });
 
 router.get('/business', (req, res) => {
-  const pageData = getBusinessDB();
-  res.render('business-form', { pageData });
+  try {
+    const pageData = getBusinessDB();
+    if (!pageData) {
+      throw new Error('Business page data not found');
+    }
+    res.render('business-form', { pageData });
+  } catch (error) {
+    console.error('Error rendering business form:', error);
+    res.status(500).send('Kuch gadbad ho gaya hai! Hum jald hi ise theek karenge.');
+  }
 });
 
 router.post('/business', (req, res) => {
@@ -39,8 +55,16 @@ router.post('/business', (req, res) => {
 });
 
 router.get('/place-order', (req, res) => {
-  const pageData = getPlaceOrderDB();
-  res.render('place-order-form', { pageData });
+  try {
+    const pageData = getPlaceOrderDB();
+    if (!pageData) {
+      throw new Error('Place order page data not found');
+    }
+    res.render('place-order-form', { pageData });
+  } catch (error) {
+    console.error('Error rendering place order form:', error);
+    res.status(500).send('Kuch gadbad ho gaya hai! Hum jald hi ise theek karenge.');
+  }
 });
 
 router.post('/place-order', (req, res) => {

@@ -8,6 +8,57 @@ let inMemoryDB = {};
 
 const DATABASE_FILE = process.env.DATABASE_FILE || path.join(__dirname, 'database.json');
 
+const defaultData = {
+  individual: [{
+    id: 1,
+    mainTitlePart1: "Personal Tax Preparation",
+    mainTitlePart2: "for Everyone",
+    subHeading: "Optimize your taxes with us",
+    cards: [
+      { title: "Card 1", description: "Description 1" },
+      { title: "Card 2", description: "Description 2" },
+      { title: "Card 3", description: "Description 3" }
+    ],
+    leftSection: { heading: "Select options", checkboxPoints: [] },
+    rightSection: { title: "Pricing", basePrice: "100", allPlansInclude: [] }
+  }],
+  business: [{
+    id: 1,
+    mainTitlePart1: "Business Tax Preparation",
+    mainTitlePart2: "for All Sizes",
+    subHeading: "Optimize your business taxes",
+    cards: [
+      { title: "Card 1", description: "Description 1" },
+      { title: "Card 2", description: "Description 2" },
+      { title: "Card 3", description: "Description 3" }
+    ],
+    leftSection: {
+      heading: "Select business options",
+      checkboxPoints: []
+    },
+    rightSection: {
+      title: "Business Pricing",
+      basePrice: "500",
+      allPlansInclude: []
+    }
+  }],
+  placeOrder: [{
+    id: 1,
+    mainTitle: "Place Your Order",
+    subHeading: "Easy and quick ordering process",
+    cards: [
+      { title: "Card 1", description: "Description 1" },
+      { title: "Card 2", description: "Description 2" },
+      { title: "Card 3", description: "Description 3" }
+    ],
+    orderOptions: [],
+    pricingDetails: {
+      basePrice: "100",
+      additionalServices: []
+    }
+  }]
+};
+
 const initializeDB = async () => {
   await loadDatabase();
   individualDB = taffy(inMemoryDB.individual);
@@ -21,7 +72,7 @@ async function loadDatabase() {
     inMemoryDB = JSON.parse(data);
   } catch (error) {
     console.log('No existing database found, initializing with default data');
-    inMemoryDB = { individual: [], business: [], placeOrder: [] };
+    inMemoryDB = defaultData;
   }
 }
 

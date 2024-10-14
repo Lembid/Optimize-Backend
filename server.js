@@ -64,9 +64,9 @@ app.use((err, req, res, next) => {
     await initializeDB();
     const { getIndividualDB, getBusinessDB, getPlaceOrderDB } = require('./config/database');
     const data = {
-      individual: getIndividualDB(),
-      business: getBusinessDB(),
-      placeOrder: getPlaceOrderDB()
+      individual: getIndividualDB() || [],
+      business: getBusinessDB() || [],
+      placeOrder: getPlaceOrderDB() || []
     };
     await fs.writeFile(DATABASE_FILE, JSON.stringify(data, null, 2));
     console.log('Initial data successfully saved');
