@@ -1,83 +1,35 @@
 const taffy = require('taffydb').taffy;
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 require('dotenv').config();
 
 let individualDB, businessDB, placeOrderDB;
+let inMemoryDB = {};
 
 const DATABASE_FILE = process.env.DATABASE_FILE || path.join(__dirname, 'database.json');
 
 const initializeDB = () => {
-  let data;
+  loadDatabase();
+  individualDB = taffy(inMemoryDB.individual);
+  businessDB = taffy(inMemoryDB.business);
+  placeOrderDB = taffy(inMemoryDB.placeOrder);
+};
+
+function loadDatabase() {
   try {
-    data = JSON.parse(fs.readFileSync(DATABASE_FILE, 'utf8'));
+    inMemoryDB = JSON.parse(fs.readFileSync(DATABASE_FILE, 'utf8'));
   } catch (error) {
     console.log('No existing database found, initializing with default data');
-    data = {
-      individual: [{
-        id: 1,
-        mainTitlePart1: 'Tax Planning',
-        mainTitlePart2: 'ke liye Swagat Hai',
-        subHeading: 'Apne taxes ko efficiently plan karein',
-        cards: [],
-        leftSection: {
-          heading: 'Left Section ka Heading',
-          checkboxPoints: []
-        },
-        rightSection: {
-          title: 'Right Section ka Title',
-          basePrice: 5000,
-          allPlansInclude: []
-        }
-      }],
-      business: [{
-        id: 1,
-        mainTitlePart1: 'Business Tax Planning',
-        mainTitlePart2: 'ke liye Swagat Hai',
-        subHeading: 'Apne business taxes ko efficiently plan karein',
-        cards: [],
-        leftSection: {
-          heading: 'Business Left Section ka Heading',
-          checkboxPoints: []
-        },
-        rightSection: {
-          title: 'Business Right Section ka Title',
-          basePrice: 20000,
-          allPlansInclude: []
-        }
-      }],
-      placeOrder: [{
-        id: 1,
-        mainTitlePart1: 'Place Your Order',
-        mainTitlePart2: 'for Tax Planning',
-        subHeading: 'Choose your tax planning package',
-        cards: [],
-        leftSection: {
-          heading: 'Order Left Section Heading',
-          checkboxPoints: []
-        },
-        rightSection: {
-          title: 'Order Right Section Title',
-          basePrice: 10000,
-          allPlansInclude: []
-        }
-      }]
-    };
+    // Initialize with default data
   }
+}
 
-  individualDB = taffy(data.individual);
-  businessDB = taffy(data.business);
-  placeOrderDB = taffy(data.placeOrder);
-};
+function saveDatabase() {
+  fs.writeFileSync(DATABASE_FILE, JSON.stringify(inMemoryDB, null, 2));
+}
 
-const saveDatabase = () => {
-  const data = {
-    individual: individualDB().get(),
-    business: businessDB().get(),
-    placeOrder: placeOrderDB().get()
-  };
-  fs.writeFileSync(DATABASE_FILE, JSON.stringify(data, null, 2));
-};
+// Use setInterval to periodically save the database
+setInterval(saveDatabase, 5 * 60 * 1000); // Save every 5 minutes
 
 module.exports = {
   initializeDB,
